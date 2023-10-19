@@ -1,0 +1,22 @@
+// theme colors
+$primary: #aa71e8;
+$secondary: #2fd042;
+
+// variables & functions
+@import 'src/sass/variables';
+
+// base & layout
+@import 'src/sass/base';
+@import 'src/sass/breakpoints';
+
+// colors
+@import 'src/sass/colors';
+
+// components
+@import 'src/sass/button';
+
+// errors
+@import 'src/sass/errors';
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';

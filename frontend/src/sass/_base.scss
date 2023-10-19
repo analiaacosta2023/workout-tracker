@@ -1,0 +1,45 @@
+// import google font
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Urbanist&display=swap');
+
+/* reset styles */
+
+* {
+  color: inherit;
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: $font-size-xxxl;
+}
+
+h2 {
+  font-size: $font-size-xxl;
+}
+
+h3 {
+  font-size: $font-size-xl;
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+p {
+  font-size: $base-font-size;
+}
+
+h6 {
+  font-size: $font-size-sm;
+}
