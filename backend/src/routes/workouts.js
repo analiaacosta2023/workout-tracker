@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import { getAllWorkouts, getWorkout, newWorkout, deleteWorkout, updateWorkout } from '../controllers/workouts.js';
+import { getWorkouts, getWorkout, newWorkout, deleteWorkout, updateWorkout } from '../controllers/workouts.js';
+import { requireAuth } from '../middleware/requireAuth.js';
 
 const router = Router();
 
-router.get('/', getAllWorkouts);
+router.use(requireAuth)
+
+router.get('/', getWorkouts);
 
 router.get('/:wid', getWorkout);
 

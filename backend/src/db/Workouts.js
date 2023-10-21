@@ -1,7 +1,7 @@
 import { workoutModel } from "../models/Workout.js";
 
-const getAllWorkouts = async () => {
-    const workouts = await workoutModel.find({}).sort({ createdAt: -1 })
+const getWorkouts = async (user_id) => {
+    const workouts = await workoutModel.find({user_id}).sort({ createdAt: -1 })
     return workouts.map(workout => workout.toObject());
 }
 
@@ -27,7 +27,7 @@ const updateWorkout = async (id, updates) => {
 
 
 export default {
-    getAllWorkouts,
+    getWorkouts,
     getWorkout,
     addWorkout,
     deleteWorkout,

@@ -5,6 +5,8 @@ import validator from 'validator';
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
+    first_name: String,
+    last_name: String,
     email: {
         type: String,
         required: true,
@@ -14,14 +16,22 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    birthday: {
+        type: Date,
+        required: true
+    },
+    gender: {
+        type: String,
+        enum: ['MALE', 'FEMALE', 'CUSTOM']
     }
 })
 
 // static signup method
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (first_name, last_name, email, password, birthday, gender) {
 
     // validation
-    if(!email || !password) {
+    if(!first_name || !last_name || !email || !password || !birthday || !gender) {
         throw Error('All fields must be filled')
     }
     if(!validator.isEmail(email)){
@@ -40,7 +50,7 @@ userSchema.statics.signup = async function (email, password) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({email, password: hash})
+    const user = await this.create({first_name, last_name, email, password: hash, birthday, gender})
     return user
 }
 

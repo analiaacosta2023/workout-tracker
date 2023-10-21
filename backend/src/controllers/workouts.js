@@ -1,9 +1,11 @@
 import Workouts from "../db/Workouts.js";
 import mongoose from "mongoose";
 
-export const getAllWorkouts = async (req, res) => {
+export const getWorkouts = async (req, res) => {
     try {
-        const workouts = await Workouts.getAllWorkouts({})
+
+        const user_id = req.user._id
+        const workouts = await Workouts.getWorkouts(user_id)
 
         res.status(200).json(workouts)
     } catch (error) {
@@ -32,16 +34,10 @@ export const getWorkout = async (req, res) => {
 }
 
 export const newWorkout = async (req, res) => {
-    const { category, title, reps, load, description } = req.body
+    const { bodyPart, equipment, name, gifUrl, instructions, secondaryMuscles, target, reps, load, description } = req.body
 
     let emptyFields = []
 
-    if(!category) {
-        emptyFields.push('category')
-    }
-    if(!title) {
-        emptyFields.push('title')
-    }
     if(!load) {
         emptyFields.push('load')
     }
@@ -53,7 +49,8 @@ export const newWorkout = async (req, res) => {
     }
 
     try {
-        const workout = await Workouts.addWorkout({ category, title, reps, load, description })
+        const user_id = req.user._id
+        const workout = await Workouts.addWorkout({ bodyPart, equipment, name, gifUrl, instructions, secondaryMuscles, target, reps, load, description, user_id })
         res.status(200).json(workout)
     } catch (error) {
         res.status(400).json({ error: error.message })

@@ -1,6 +1,8 @@
 // theme colors
 $primary: #aa71e8;
-$secondary: #2fd042;
+$secondary: #33a040;
+
+$navbarHeight: 140px;
 
 // variables & functions
 @import 'src/sass/variables';
@@ -17,6 +19,9 @@ $secondary: #2fd042;
 
 // errors
 @import 'src/sass/errors';
+
+// others
+@import 'src/sass/customStyle.scss';
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
